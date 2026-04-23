@@ -4,34 +4,34 @@ const projects = [
     title: "Weather App",
     description: "Real-time weather using OpenWeather API. Search any city worldwide.",
     tags: ["React", "API", "CSS"],
-    color: "#6c00ff"
+    color: "bg-purple-600"
   },
   {
     id: 2,
     title: "Todo App",
     description: "Full featured todo app with filters and localStorage persistence.",
     tags: ["React", "useState", "localStorage"],
-    color: "#ff5500"
+    color: "bg-orange-500"
   },
   {
     id: 3,
     title: "Portfolio",
     description: "This portfolio — built with React and React Router.",
-    tags: ["React", "Router", "CSS"],
-    color: "#00a86b"
+    tags: ["React", "Router", "Tailwind"],
+    color: "bg-green-600"
   }
 ]
 
 function ProjectCard({ title, description, tags, color }) {
   return (
-    <div className="project-card">
-      <div className="project-top" style={{ backgroundColor: color }}></div>
-      <div className="project-body">
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <div className="tags">
+    <div className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:-translate-y-1 transition-transform">
+      <div className={`h-2 ${color}`}></div>
+      <div className="p-6">
+        <h2 className="text-lg font-bold mb-2">{title}</h2>
+        <p className="text-white/60 text-sm leading-relaxed mb-5">{description}</p>
+        <div className="flex gap-2 flex-wrap">
           {tags.map(tag => (
-            <span key={tag} className="tag">{tag}</span>
+            <span key={tag} className="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">{tag}</span>
           ))}
         </div>
       </div>
@@ -41,9 +41,9 @@ function ProjectCard({ title, description, tags, color }) {
 
 function Projects() {
   return (
-    <div className="page">
-      <h1 className="page-title">My Projects</h1>
-      <div className="projects-grid">
+    <div className="max-w-4xl mx-auto px-10 py-16">
+      <h1 className="text-5xl font-bold text-orange-500 mb-12">My Projects</h1>
+      <div className="grid grid-cols-3 gap-6">
         {projects.map(project => (
           <ProjectCard key={project.id} {...project} />
         ))}

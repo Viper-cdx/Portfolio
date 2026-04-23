@@ -4,12 +4,26 @@ function Navbar() {
   const location = useLocation()
 
   return (
-    <nav className="navbar">
-      <p className="logo">Jerry ⚡</p>
-      <div className="nav-links">
-        <Link className={location.pathname === "/" ? "active" : ""} to="/">Home</Link>
-        <Link className={location.pathname === "/about" ? "active" : ""} to="/about">About</Link>
-        <Link className={location.pathname === "/projects" ? "active" : ""} to="/projects">Projects</Link>
+    <nav className="flex justify-between items-center px-16 py-5 bg-white/5 backdrop-blur-md sticky top-0 z-50 border-b border-white/10">
+      <p className="text-orange-500 text-xl font-bold">Jerry ⚡</p>
+      <div className="flex gap-8">
+        {[
+          { path: "/", label: "Home" },
+          { path: "/about", label: "About" },
+          { path: "/projects", label: "Projects" }
+        ].map(({ path, label }) => (
+          <Link
+            key={path}
+            to={path}
+            className={`text-sm transition-colors ${
+              location.pathname === path
+                ? "text-orange-500"
+                : "text-white/60 hover:text-white"
+            }`}
+          >
+            {label}
+          </Link>
+        ))}
       </div>
     </nav>
   )
